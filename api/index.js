@@ -7,11 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 
-app.use(cors({
-  origin: 'https://lovedetector.vercel.app/',
-  methods: 'GET,POST', 
-  allowedHeaders: 'Content-Type,Authorization' 
-}));
+app.use(cors());
 app.use(express.json());
 
 const db = new pg.Pool({

@@ -16,7 +16,7 @@ function App() {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/names")
+    axios.get("https://love-language.onrender.com/names")
       .then(response => setDetails(response.data.data))
       .catch(error => {
         console.log(error);
@@ -51,7 +51,7 @@ function App() {
       console.log("Final Answers:", ans);
       setLoading(true);
 
-      fetch("http://localhost:3001/analyze", {
+      fetch("https://love-language.onrender.com/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, answers: Object.values(ans) }),
