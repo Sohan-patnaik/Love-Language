@@ -7,7 +7,12 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000", "https://love-language.onrender.com"], 
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 app.use(express.json());
 
 const db = new pg.Pool({
@@ -105,4 +110,5 @@ app.get("/names", async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log("Server ready on port 3000."));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
